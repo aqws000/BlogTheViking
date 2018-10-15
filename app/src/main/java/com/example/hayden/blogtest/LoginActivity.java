@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    private DatabaseReference mDatabase;
+    private DatabaseReference mDatabaseUsers;
     private ProgressDialog mProgress;
 
 
@@ -42,8 +42,8 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-        mDatabase.keepSynced(true);
+        mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users");
+        mDatabaseUsers.keepSynced(true);
         mProgress = new ProgressDialog(this);
 
         mLoginPasswordField = (EditText) findViewById(R.id.loginPasswordField); //Hayden these have issues
@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
 
             final String user_id = mAuth.getCurrentUser().getUid();
 
-            mDatabase.addValueEventListener(new ValueEventListener() {
+            mDatabaseUsers.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -124,7 +124,12 @@ public class LoginActivity extends AppCompatActivity {
 
                     } else {
 
-                        Toast.makeText(LoginActivity.this, "Account needs to be setup", Toast.LENGTH_LONG).show();
+                        Intent setupIntent = new Intent(LoginActivity.this, SetupActivity.class);
+                        setupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(setupIntent);
+
+
+
                     }
                 }
 

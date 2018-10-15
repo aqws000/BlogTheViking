@@ -64,4 +64,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/GoogleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign in"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="346dp" />
 </android.support.constraint.ConstraintLayout>
