@@ -20,17 +20,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
-private EditText mNameField;
+
+    private EditText mNameField;
     private EditText mEmailField;
     private EditText mPasswordField;
 
     private Button mRegisterBtn;
 
-    private FirebaseAuth mAuth;
 
+    private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
 
     private ProgressDialog mProgress;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +93,7 @@ private EditText mNameField;
 
                         mProgress.dismiss();
 
-                        Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                        Intent mainIntent = new Intent(RegisterActivity.this, SetupActivity.class);
                         mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(mainIntent);
 
