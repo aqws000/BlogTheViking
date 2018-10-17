@@ -51,6 +51,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private GoogleApiClient mGoogleApiClient;
 
+    private Button signUp;
+
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,18 @@ public class LoginActivity extends AppCompatActivity {
         mProgress = new ProgressDialog(this);
 
         mGoogleBtn = (SignInButton) findViewById(R.id.googleBtn);
+
+        signUp = (Button) findViewById(R.id.signUp);
+
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent loginIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(loginIntent);
+
+            }
+        });
 
 
         mLoginPasswordField = (EditText) findViewById(R.id.loginPasswordField);
